@@ -20,7 +20,11 @@ I use [Qbserve](https://qotoqot.com/qbserve/) to monitor my time spent on my Mac
 The iOS/Android app [Moves](https://moves-app.com/) tracks my activities. 
 
 ### Demo
+![](https://ws2.sinaimg.cn/large/006tKfTcly1fh4t8mq4pdj31kw188x6p.jpg)
 
+Okay... Here's an annotated copy:
+
+![](https://ws1.sinaimg.cn/large/006tKfTcly1fh4t8hk9vhj31kw18a1l2.jpg)
 
 
 ### How To
