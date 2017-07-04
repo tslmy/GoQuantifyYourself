@@ -6,3 +6,7 @@ QbserveExport/
 TogglExport/
 TogglTables/
 Plots/
+
+.RData
+
+.Rhistory
