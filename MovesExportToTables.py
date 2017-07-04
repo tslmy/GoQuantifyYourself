@@ -81,16 +81,3 @@ with open(filename_to_read, 'r', encoding='utf-8') as csvfile:# If csvfile is a 
             write_activity(this_start_obj, this_end_obj, this_name_raw)
             # and update the current-moment pointer:
             now = this_end_obj
-
-
-
-
-exit()
-
-
-# open the file to write:
-with open("MovesTables/storyline.csv","w+", encoding='utf-8') as fl:
-    # write the headers to the file we just opened:
-    fl.write("date, start_time, end_time, duration, type\n")
-    with open("MovesExports/storyline.csv", "r", encoding='utf-8') as fr:
-        json_string = fr.read()
