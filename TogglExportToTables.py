@@ -1,12 +1,11 @@
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 import glob, os, json, csv#, datetime
 from datetime import datetime, time
 
 if_verbose = False
 # define the filenames, just for code readability matters:
 filename_to_write = "TogglTables/data.csv"
-
 
 def write_activity(start_obj, end_obj, name = "idle"):
     '''This function writes a time entry to the opened csv file.'''
@@ -25,7 +24,6 @@ def write_activity(start_obj, end_obj, name = "idle"):
         duration_obj = end_obj-start_obj # this will be a 'datetime.timedelta' object 
         duration = duration_obj.total_seconds()
         if duration>0:
-            #duration_str = str(duration)
             if if_verbose: print(date_str+"\t"+start_str+"\t"+end_str+"\t"+name)
             writer.writerow([date_str, start_str, end_str, name])
 
