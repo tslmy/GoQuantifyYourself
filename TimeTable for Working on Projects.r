@@ -7,8 +7,10 @@ setwd(this.dir)
 #if(!require("devtools")) install.packages("devtools")
 #if(!require("colormap")) devtools::install_github("bhaskarvk/colormap")
 
-# Install the iWantHue package from GitHub Gist:
-devtools::source_gist('45b49da5e260a9fc1cd7', filename = "iWantHue.R")
+# Install the iWantHue package from GitHub Gist <https://gist.github.com/Pakillo/46aab85863d17acd2de0>:
+# devtools::source_gist('45b49da5e260a9fc1cd7', filename = "iWantHue.R")
+# Had to save this to local, because I'm now on a Wi-Fi-less train:
+source("iwanthue.r")
 
 # Load libraries:
 library(ggplot2)
@@ -18,38 +20,25 @@ library(plyr)
 # draw:
 
 # (1) TimeTable:
-#     Load the data:
-data_log <- read_csv("TogglTables/data.csv", 
+data_log <- read_csv("TogglTables/data.csv",  # Load the data
                       col_types = cols(date = col_date(format = "%Y-%m-%d"), 
                                         end = col_time(format = "%H:%M:%S"), 
                                       start = col_time(format = "%H:%M:%S")))
 
-#    Define the palatte:
-tasks = unique(data_log$name)
-tasks = tasks[tasks != "idle"] # to remove the "idle" one
-tasks_count = length(tasks)
-tasks_color = iwanthue(tasks_count)
-# then add the "idle" item back:
-tasks = c(tasks, c("idle"))
-tasks_color = c(tasks_color, c("#ffffff00"))
-# apply the colors:
-data_log$color <- mapvalues(data_log$name, from=tasks, to=tasks_color)
+data_log$start <- as.POSIXct(data_log$start, format = "%H:%M:%S")
+data_log$end <- as.POSIXct(data_log$end, format = "%H:%M:%S")
 
-ggplot(data = data_log, aes(x = date, y = duration)) + 
-  geom_bar(stat = "identity", fill=data_log$color) + 
-  # now remove background elements -- from http://felixfan.github.io/ggplot2-remove-grid-background-margin/:
-  #theme(panel.grid.major = element_blank(), # no major gridlines
-        #panel.grid.minor = element_blank(), # no minor gridlines
-        #panel.background = element_blank() # no background
-        #axis.title = element_blank(), # no axis labels
-        #axis.line = element_blank() # no axis lines # = element_line(colour = "black")
-        #)+
-  scale_y_reverse(breaks=0:24)+#function(x) seconds_to_period(x))#strftime(chron(times=c(x/86400)), "%H:%M"))#+coord_flip()
-  coord_cartesian(ylim = c(0, 24), expand = FALSE)+
+ggplot(data_log) +
+  geom_rect(aes(xmin = date - 0.5,    xmax = date + 0.5,
+                ymin = start,         ymax = end,
+                fill = name)) + 
+  scale_y_datetime(date_labels = "%H:%M") + 
+  #coord_cartesian(ylim = c(0, 24), expand = FALSE)+
+  scale_x_date(date_breaks = "2 month", date_labels = "%b %Y") +
   labs( x = "Date", y = "Time (Hour)",
         title ="Data Exported from Toggl",
         subtitle = "Logs of How I Spent My Time Working on Projects",
-        caption = "Made by Mingyang Li")+
-  scale_x_date(date_breaks = "1 month", date_labels = "%b %Y")
+        caption = "Made by Mingyang Li")
 
 ggsave("Plots/Waterfall_Projects.pdf", plot = last_plot())
+

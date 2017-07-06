@@ -23,19 +23,17 @@ def write_activity(start_obj, end_obj, name = "idle"):
         start_str = start_obj.strftime('%H:%M:%S')
         end_str = end_obj.strftime('%H:%M:%S')
         duration_obj = end_obj-start_obj # this will be a 'datetime.timedelta' object 
-        duration = duration_obj.total_seconds()/3600
+        duration = duration_obj.total_seconds()
         if duration>0:
-            duration_str = str(duration)
-            if if_verbose: print(date_str+"\t"+start_str+"\t"+end_str+"\t"+name+"\t"+duration_str+"\t")
-            writer.writerow([date_str, start_str, end_str, name, duration_str])
+            #duration_str = str(duration)
+            if if_verbose: print(date_str+"\t"+start_str+"\t"+end_str+"\t"+name)
+            writer.writerow([date_str, start_str, end_str, name])
 
 # Open the file for writing first:
 with open(filename_to_write,"w+", encoding='utf-8') as fl:
     writer = csv.writer(fl)
     # write the header:
-    writer.writerow(["date", "start", "end", "name", "duration"])
-    # before iterating over the csv table, set a flag:
-    this_is_the_first_entry = True
+    writer.writerow(["date", "start", "end", "name"])
     # Find files to read:
     for filename_to_read in glob.glob("TogglExport/Toggl_time_entries_[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_to_[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].csv"):
         print("Processing "+filename_to_read+" ...")
@@ -50,45 +48,12 @@ with open(filename_to_write,"w+", encoding='utf-8') as fl:
                 # save each entry to a easy-to-remember variable name:
                 #User, Email, Client, Project, Task, Description, Billable, Start_date, Start_time, End_date, End_time, Duration, Tags, Amount = row
                 _,_,_,Project,_,Description,_,Start_date, Start_time, End_date, End_time,_,_,_  = row
-                # combine raw strings of date&time:
-                Start = Start_date+" "+Start_time
-                End = End_date+" "+End_time
-                # debug info:
-                if if_verbose: print(Project+" - "+Description+"\t\t\t"+Start+" - "+End)
                 # parse the dates and durations:
-                this_start_obj = datetime.strptime(Start, '%Y-%m-%d %H:%M:%S')
-                this_end_obj = datetime.strptime(End, '%Y-%m-%d %H:%M:%S')
+                this_start_obj = datetime.strptime(Start_date+Start_time, '%Y-%m-%d%H:%M:%S')
+                this_end_obj = datetime.strptime(End_date+End_time, '%Y-%m-%d%H:%M:%S')
                 # some shorthands:
                 this_start_day = this_start_obj.date()
                 this_start_time = this_start_obj.time()
-                # now the real work:
-                if this_is_the_first_entry:
-                    # disable this toggle:
-                    this_is_the_first_entry = False
-                    # update the "now" pointer:
-                    now = this_start_obj
-                    # create a shorthand:
-                    now_time = now.time()
-                    # navigate to the beginning of this day:
-                    the_beginning = now.replace(hour = 0, minute = 0, second = 0)
-                    # it is possible that our first activity started at a new day:
-                    if now_time is not the_beginning:
-                        write_activity(the_beginning, now)
-                # if this activity begins later than the current moment we tracked to:
-                if this_start_obj > now:
-                    if Project == "idle":
-                        this_start_obj=now
-                    else:
-                        # then we have to compensate for the empty record:
-                        #print("Compensating...")
-                        write_activity(now, this_start_obj)
-                        # and update the current-moment pointer:
-                        now = this_start_obj
-                # now we write this activity:
-                if Project == "idle":
-                    write_activity(this_start_obj, this_end_obj, "idle")
-                else:
-                    write_activity(this_start_obj, this_end_obj, Project+" - "+Description)
-                # and update the current-moment pointer:
-                now = this_end_obj
+                # write this event:
+                write_activity(this_start_obj, this_end_obj, Project)#+" - "+Description)
 
