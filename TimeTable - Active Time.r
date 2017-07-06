@@ -2,19 +2,10 @@
 this.dir <- dirname(parent.frame(2)$ofile) # should be something like "~/Projects/TimeManagement/" on my mac.
 setwd(this.dir)
 
-# Install package ggplot2
-#install.packages("ggplot2")
-# Load package ggplot2
+# Load packages
 library(ggplot2)
-
-# Install package ggplot2
-#install.packages("readr")
-# Load package readr
 library(readr)
-
-#install.packages("lubridate")
-# Load package lubridate
-library(lubridate)
+library(scales)
 
 # draw:
 

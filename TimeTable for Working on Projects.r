@@ -2,20 +2,9 @@
 this.dir <- dirname(parent.frame(2)$ofile) # should be something like "~/Projects/TimeManagement/" on my mac.
 setwd(this.dir)
 
-## Install the colormap package on https://bhaskarvk.github.io/colormap/
-#if(!require("V8")) install.packages("V8")
-#if(!require("devtools")) install.packages("devtools")
-#if(!require("colormap")) devtools::install_github("bhaskarvk/colormap")
-
-# Install the iWantHue package from GitHub Gist <https://gist.github.com/Pakillo/46aab85863d17acd2de0>:
-# devtools::source_gist('45b49da5e260a9fc1cd7', filename = "iWantHue.R")
-# Had to save this to local, because I'm now on a Wi-Fi-less train:
-source("iwanthue.r")
-
 # Load libraries:
 library(ggplot2)
 library(readr)
-library(plyr)
 library(scales)
 
 # draw:
