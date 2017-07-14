@@ -6,6 +6,8 @@ QbserveExport/
 TogglExport/
 TogglTables/
 Plots/
+TraktExport/
+TraktTables/
 
 .RData
 

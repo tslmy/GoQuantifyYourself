@@ -63,6 +63,12 @@ Okay... Here's an annotated copy:
 4. Run `MovesExportToTables.py`, perhaps by `CMD+B`-ing within Sublime Text.
 5. Open `TimeTable - Active Time.r` in [RStudio][] and [source](http://www.dummies.com/programming/r/how-to-source-a-script-in-r/) this script.
 
+## What's My Taste Like in Movies?
+
+1. Download your [trakt.tv](https://trakt.tv/) data by accessing `https://darekkay.com/service/trakt/trakt.php?username=USERNAME`. This service is provided by [Darek Kay](https://darekkay.com/2014/08/12/trakt-tv-backup/). Kudos.
+2. Unzip the `trakt_backup_DATE-HERE.zip`, and copy the `watched_movies.txt` to `TraktExport/` of the repo directory.
+3. ==[TODO]==
+
 ## Time Spent Sleeping (or Trying to, at Least)
 
 ==*TODO*==
