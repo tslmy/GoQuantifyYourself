@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
-import glob, os, json, csv#, datetime
+import glob, os, csv
 from datetime import datetime, time
 
 if_verbose = False
