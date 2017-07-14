@@ -16,3 +16,4 @@ TraktTables/
 _BarStackingProblem/
 
 virtualenv/
+.Rproj.user
