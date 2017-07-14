@@ -14,3 +14,5 @@ TraktTables/
 .Rhistory
 
 _BarStackingProblem/
+
+virtualenv/
