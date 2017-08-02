@@ -83,7 +83,10 @@ Okay... Here's an annotated copy:
 1. Download your [trakt.tv](https://trakt.tv/) data by accessing `https://darekkay.com/service/trakt/trakt.php?username=USERNAME`. This service is provided by [Darek Kay](https://darekkay.com/2014/08/12/trakt-tv-backup/). Kudos.
 2. Unzip the `trakt_backup_DATE-HERE.zip`, in which there is a `watched_movies.txt`.
 3. Open this `watched_movies.txt`, copy its whole content, paste it onto [this JSON-to-CSV converter](https://konklone.io/json/), and __Download the entire CSV__ as `TraktExport/watched_movies.csv`.
-4. ​
+4. Go to [API Settings of The Movie Database (TMDb)](https://www.themoviedb.org/settings/api) and apply for an App Key.
+5. Save the 32-character v3 API Key in the format of `tmdb = "32-character v3 API Key here"` and save as `keys.py`.
+6. Run `TraktExportToTables.py`, perhaps by `CMD+B`-ing within Sublime Text.
+7. Open `Summary for Movies.r` in [RStudio][] and [source](http://www.dummies.com/programming/r/how-to-source-a-script-in-r/) this script.
 
 ### Time Spent Sleeping (or Trying to, at Least)
 

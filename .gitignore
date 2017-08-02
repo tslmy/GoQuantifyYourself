@@ -17,3 +17,7 @@ _BarStackingProblem/
 
 virtualenv/
 .Rproj.user
+
+keys.py
+
+__pycache__/
