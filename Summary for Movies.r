@@ -2,7 +2,7 @@
 library(fmsb)
 library(readr)
 genres <- read_csv("TraktTables/genres.csv")
-tastePlot = radarchart(genres, 
+radarchart(genres, 
            #axistype = 1, #centre axis labels only
            pty = 32,     #do not plot data points
            pfcol = rgb(0.2,0.5,0.5,0.4), #fill color
