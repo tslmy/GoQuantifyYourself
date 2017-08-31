@@ -1,6 +1,17 @@
-# Where Has All My Time Gone?
+# ![logo](logo/logo.svg)GoQuantifyYourself (Goquy[^1])[^2]
 
-This is a personal project for visualizing how my time is spent. 
+Goquy is a set of Python and R scripts that visualizes your daily activities in waterfall-like timetables. It shows you your past months (or years!) on a single image.
+
+Goquy imports data from tracking apps such as [Moves][], [Qbserve][], [Toggl][], etc. Each functionality is contained in separated scripts, so you can take only what you need. :)  
+
+This is a side-project by [tslmy][] while he is learning his way to [R][].
+
+[tslmy]: https://github.com/tslmy/
+
+[R]: https://www.r-project.org/
+
+[^1]: *Goquy* is pronounced as "go-kway."
+[^2]: Logo derivated from icons made by Freepik & Madebyoliver from [www.flaticon.com](https://www.flaticon.com/).
 
 [TOC]
 
@@ -44,7 +55,9 @@ To make use of it, follow these steps:
 
 ### Time Spent Working on Projects
 
-Sometimes I track my work with [Toggl](https://toggl.com/). It not only adds more detail to the "productivity hours" identified from [Qbserve][], but also corrects my off-screen-but-sitting-down tasks that are recorded by neither [Qbserve][] nor [Moves][].
+Sometimes I track my work with [Toggl][]. It not only adds more detail to the "productivity hours" identified from [Qbserve][], but also corrects my off-screen-but-sitting-down tasks that are recorded by neither [Qbserve][] nor [Moves][].
+
+[Toggl]: https://toggl.com/
 
 #### Demo
 
