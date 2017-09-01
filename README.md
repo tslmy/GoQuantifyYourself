@@ -24,7 +24,9 @@ Sidenotes:
 - Because **I have these data collected**. What a waste of time (and battery life) if you don't make use of these data?
 - Because native visualization from these time-tracking apps are not quite getting there.
 
-##What Can Goquy Do?
+What do I mean by "not quite getting there"?
+
+## What Can Goquy Do?
 
 This is the timesheet built in [Qbserve][]:
 
