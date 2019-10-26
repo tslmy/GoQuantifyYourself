@@ -7,4 +7,4 @@ lockfile==0.12.2
 msgpack-python==0.4.8
 requests==2.18.1
 six==1.10.0
-urllib3==1.21.1
+urllib3==1.24.2
